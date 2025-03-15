@@ -2,13 +2,13 @@
 
 This is not well tested and any user feedback/recommendations will be greatly appreciated.
 
-There are 2 steps needed.
+First run will create the /config/.code.json file. The script will also output the special Xfinity login url to gather the necessary authentication "code".  Once the login url is displayed in the container logs, stop the container. 
 
-First run will create the /config/.code.json file needed for Second run. The script will also output the special Xfinity login url to gather the "code"
+Copy the last url displayed in the logs, and proceed with the main installation steps 2-11.
 
-Second run, supply the XFINITY_CODE using the "code" gathered from Step 1. Script should now hopefully be able to get a refresh token. The refresh token is saved in the /config/.token.json file.  You can supply the refresh token as an environment variable "REFRESH_TOKEN" for any additional runs. The script will use REFRESH_TOKEN if provided otherwise it will use the token provided in the /config/.token.json file.
+Modify your container configuration to include the environment variable XFINITY_CODE and the "code" gathered in the previous steps.  Start the modified container and the script should now be able to get a refresh token and store it in the /config/.token.json file.
 
-## Docker Compose Example[^1]
+## Docker Compose Example (first run)[^1]
 
 ```yaml
 services:
